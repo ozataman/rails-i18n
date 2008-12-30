@@ -119,6 +119,13 @@ ru:
         few:   "больше {{count}} лет"
         many:  "больше {{count}} лет"
         other: "больше {{count}} лет"
+    prompts:
+      year: "Год"
+      month: "Месяц"
+      day: "День"
+      hour: "Часов"
+      minute: "Минут"
+      second: "Секунд"
 
   activerecord:
     errors:
@@ -166,6 +173,11 @@ ru:
 
   support:
     array:
+      # Rails 2.2
       sentence_connector: "и"
       skip_last_comma: true
-
+      
+      # Rails 2.3
+      words_connector: ", "
+      two_words_connector: " и "
+      last_word_connector: " и "
