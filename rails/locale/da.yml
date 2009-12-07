@@ -1,8 +1,12 @@
 # Danish translation file for standard Ruby on Rails internationalization
-# by Lars Hoeg (http://www.lenio.dk/)
+# by Lars Hoeg (larshoeg@gmail.com, http://www.lenio.dk/)
 
 da:
+  # active_support
   date:
+    # See http://www.dsn.dk/oss_faq.htm#datoer and http://en.wikipedia.org/wiki/Date_formats
+    # either use traditional (2.10.03, 2. oktober 2003): "%e.%m.%y", "%e. %B %Y"
+    # or international ISO 8601 format (2003-10-20): "%Y-%m-%d"
     formats:
       default: "%d.%m.%Y"
       short: "%e. %b %Y"
@@ -24,8 +28,16 @@ da:
 
   support:
     array:
-      sentence_connector: "og"
-      skip_last_comma: true
+      # Rails 2.2
+      #sentence_connector: "og"
+      #skip_last_comma: true
+      # Rails 2.3
+      words_connector: ", "
+      two_words_connector: " og "
+      last_word_connector: " og "
+    select:
+      # default value for :prompt => true in FormOptionsHelper
+      prompt: "Vælg..."
 
   datetime:
     distance_in_words:
@@ -60,7 +72,18 @@ da:
       over_x_years:
         one:  "mere end et år"
         other: "mere end {{count}} år"
+      almost_x_years:
+        one:   "næsten et år"
+        other: "næsten {{count}} years"
+    prompts:
+      second: "Sekund"
+      minute: "Minut"
+      hour: "Time"
+      day: "Dag"
+      month: "Måned"
+      year: "År"
 
+  # action_view
   number:
     format:
       separator: ","
@@ -83,13 +106,28 @@ da:
         # separator: 
         delimiter: ""
         precision: 1
-      storage_units: [Bytes, KB, MB, GB, TB]
+      # Rails 2.2
+      #storage_units: [Bytes, KB, MB, GB, TB]
+      # Rails 2.3
+      storage_units:
+        # Storage units output formatting.
+        # %u is the storage unit, %n is the number (default: 2 MB)
+        format: "%n %u"
+        units:
+          byte:
+            one:   "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
     percentage:
       format:
         # separator:
         delimiter: ""
         # precision:
 
+  # active_record
   activerecord:
     errors:
       messages:
@@ -112,7 +150,16 @@ da:
         less_than_or_equal_to: "skal være mindre end eller lig med {{count}}"
         odd: "skal være ulige"
         even: "skal være lige"
+        record_invalid: "Validering fejlede: {{errors}}"
 
+      template:
+        header:
+          one:   "En fejl forhindrede {{model}} i at blive gemt"
+          other:  "{{count}} fejl forhindrede denne {{model}} i at blive gemt"
+        body: "Der var problemer med følgende felter:"
+
+  activemodel:
+    errors:
       template:
         header:
           one:   "En fejl forhindrede {{model}} i at blive gemt"

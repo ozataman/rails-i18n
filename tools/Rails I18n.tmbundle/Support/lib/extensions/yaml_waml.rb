@@ -1,10 +1,13 @@
 # stolen from Kakutani Shintaro http://github.com/kakutani/yaml_waml
+# fixing output result of 'to_yaml' method which otherwise treats multibyte UTF-8 strings as binary
 
 require "yaml"
 
 class String
-  def is_binary_data?
-    false
+  if !defined?('is_binary_data')
+    def is_binary_data?
+      false
+    end
   end
 end
 
